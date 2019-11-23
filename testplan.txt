@@ -1,0 +1,30 @@
+Test cases
+
+- run each test case 100
+- get average with time
+- each test do thread & procs
+- dont rescramble just use the returned index to swap
+
+1. generate an array with 250 bucketSize and 30,000 elements
+2. randomly vary maxBucket size between 1 and 250 for a 30,000 element
+3. randomly vary listsize between 2 & MAX_LIST_SIZE for 250 bucketSize
+4. randomly vary listsize & bucketsize, with list size varying between 2 and MAX_LIST_SIZE, and bucketSize varying from 1 to 250 
+
+MAX_LIST_SIZE is a ratio between bucketSize and ulimit (ulimit is the same as MAX_WORKERS)
+	b. Test Suite
+		Similar to memgrid, write your own suite of tests to investigate the runtimes of Proceses and threads. You should compare Process and thread runtimes on different amounts of data. Make sure your steps in data size are significant based on what you want to test. You should determine:
+			(done)- a general trend of: time vs. size of list to search for Processes as well as time vs. size of list to search for threads
+			- a tradeoff point for Processes vs threads
+				i.e. how long a list would cause threads to perform at the same rate as a Process
+					e.g. perhaps, if you create a new thread/Proc for every 250 integers, then searching a list of 5000 integers using threads (requiring 20 threads) is as fast as searching a list of 250 integers using a single Process
+			- a tradeoff point for parallelism for Processes and threads
+				i.e. at what point does splitting the work over more Processes/threads make the task take longer than not doing so?
+					e.g. perhaps sorting a list of 250 elements, but splitting it up in to lists of size 10 (requiring 25 threads) is slower than splitting it up in to lists of size 11 (requiring 22 threads)
+
+		When run, your code should print out:
+			- which multi-mode it is in (-process or -thread)
+			- which test from your testplan document is being run
+				- the parameters of the test
+				- which iteration is being run
+			- the results (time) of each test
+				- the aggregate results of a test batch once completed (min, max, average, standard deviation)
